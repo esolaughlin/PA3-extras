@@ -16,3 +16,21 @@ addPost = function(){
     setGreets();
 }
 
+handleOnLoad = function(){
+    displayGill();
+}
+
+displayGill = function(){
+    const getGillApiUrl = "https://localhost:8001/api/gill";
+    fetch(getGillApiUrl).then(function(response){
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+        let html = "<h1>Your current gill amount is "+ json + "</h1>";
+        document.getElementById("currgill").innerHTML = html;
+    }).catch(function(error){
+        console.log(error);
+    })
+
+}
+
